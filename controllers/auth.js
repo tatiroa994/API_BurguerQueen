@@ -1,14 +1,5 @@
 const { response } = require("express");
 
-const userNew = (req, res = response) => {
-  const { email, name, password } = req.body;
-  console.log(req.body);
-  res.json({
-    ok: true,
-    msg: "crear usuario /new",
-  });
-};
-
 const userLogin = (req, res) =>
   res.json({
     ok: true,
@@ -22,7 +13,6 @@ const tokenRevalidate = (req, res) =>
   });
 
 module.exports = {
-  userNew,
   userLogin,
   tokenRevalidate,
 };

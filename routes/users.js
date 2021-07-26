@@ -9,7 +9,7 @@ const {
 
 const router = Router();
 
-router.delete("/", deleteUser);
+router.delete("/:id", deleteUser);
 
 router.post("/new", userNew);
 
@@ -17,6 +17,6 @@ router.get("/", getAllUsers);
 
 router.get("/:id", getUser);
 
-router.put("/", updateUser);
+router.put("/:id", updateUser);
 
 module.exports = router;

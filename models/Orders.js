@@ -31,7 +31,7 @@ const ordersSchema = new Schema(
       trim: true,
     },
     client: {
-      type: Number,
+      type: String,
       required: true,
       trim: true,
     },

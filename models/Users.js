@@ -32,7 +32,7 @@ const usersSchema = new Schema(
       trim: true,
     },
     roles: {
-      type: usersSchema,
+      type: rolSchema,
       required: true,
       trim: true,
     },
@@ -43,6 +43,6 @@ const usersSchema = new Schema(
   }
 );
 
-const usersModel = model("Auth", usersSchema);
+const usersModel = model("Users", usersSchema);
 
 module.exports = { usersModel };

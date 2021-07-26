@@ -3,11 +3,11 @@ const { ordersNew, updateOrders, deleteOrders, getAllOrders, getOrder} = require
 
 const router = Router();
 
-router.post("/", ordersNew);
+router.post("/new", ordersNew);
 
-router.put("/", updateOrders);
+router.put("/:id", updateOrders);
 
-router.delete("/", deleteOrders);
+router.delete("/:id", deleteOrders);
 
 router.get("/", getAllOrders);
 
