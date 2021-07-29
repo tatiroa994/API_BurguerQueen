@@ -22,6 +22,11 @@ const productSchema = new Schema(
       required: true,
       trim: true,
     },
+    subtype:{
+      type: String,
+      required: true,
+      trim: true,
+    }
   },
   {
     versionKey: false,

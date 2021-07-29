@@ -1,9 +1,10 @@
 const { response } = require("express");
-const { ordersModel } = require("../models/Orders");
+const { tablesModel } = require("../models/tables");
 
-const ordersNew = async(req, res = response) => {
+const newOrder = async(req, res = response) => {
   try {
-    const newOrder = new ordersModel({
+    const newOrder = new tablesModel({
+      _id: req.body._id,
       userId: req.body.userId,
       client: req.body.client,
       products: req.body.products,
@@ -23,9 +24,9 @@ const ordersNew = async(req, res = response) => {
   }
 };
 
-const updateOrders = async(req, res = response) => {
+const updateOrder = async(req, res = response) => {
   try {
-    const order = await ordersModel.findByIdAndUpdate(req.params.id, req.body);
+    const order = await tablesModel.findByIdAndUpdate(req.params.id, req.body);
     res.json({
       ok: true,
       msg: `Order ${order.id} actualizado`,
@@ -37,9 +38,9 @@ const updateOrders = async(req, res = response) => {
   }
 };
 
-const deleteOrders = async (req, res = response) => {
+const deleteOrder = async (req, res = response) => {
   try {
-    const order = await ordersModel.findByIdAndDelete(req.params.id);
+    const order = await tablesModel.findByIdAndDelete(req.params.id);
     res.json({
       ok: true,
       msg: `orden ${order.id} eliminada`,
@@ -53,7 +54,7 @@ const deleteOrders = async (req, res = response) => {
 
 const getAllOrders = async (req, res = response) => {
   try {
-    const allOrders = await ordersModel.find();
+    const allOrders = await tablesModel.find();
     res.json(allOrders);
   } catch (error) {
     res.status(500).json({
@@ -65,7 +66,7 @@ const getAllOrders = async (req, res = response) => {
 const getAllOrdersByStatus = async (req, res = response) => {
   try {
     const { status } = req.query;
-    const allOrders = await ordersModel.find({status});
+    const allOrders = await tablesModel.find({status});
     res.json(allOrders);
   } catch (error) {
     res.status(500).json({
@@ -76,7 +77,7 @@ const getAllOrdersByStatus = async (req, res = response) => {
 
 const getOrder = async(req, res = response) => {
   try {
-    const order = await ordersModel.findById(req.params.id);
+    const order = await tablesModel.findById(req.params.id);
     res.json(order);
   } catch (error) {
     res.status(500).json({
@@ -86,7 +87,7 @@ const getOrder = async(req, res = response) => {
 };
 
 module.exports = {
-  ordersNew,
+  newOrder,
   updateOrders,
   deleteOrders,
   getAllOrders,

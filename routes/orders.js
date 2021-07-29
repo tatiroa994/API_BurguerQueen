@@ -1,5 +1,12 @@
 const { Router } = require("express");
-const { ordersNew, updateOrders, deleteOrders, getAllOrders, getOrder} = require("../controllers/orders");
+const {
+  ordersNew,
+  updateOrders,
+  deleteOrders,
+  getAllOrders,
+  getOrder,
+  getAllOrdersByStatus,
+} = require("../controllers/orders");
 
 const router = Router();
 
@@ -10,6 +17,8 @@ router.put("/:id", updateOrders);
 router.delete("/:id", deleteOrders);
 
 router.get("/", getAllOrders);
+
+router.get("/status", getAllOrdersByStatus);
 
 router.get("/:id", getOrder);
 

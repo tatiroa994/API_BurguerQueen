@@ -5,17 +5,20 @@ const {
   getProduct,
   newProduct,
   updateProduct,
+  getProductsByType
 } = require("../controllers/products");
 
 const router = Router();
 
-router.delete("/:id", deleteProduct); //ok
+router.delete("/:id", deleteProduct); 
 
-router.get("/", getProducts); //ok
+router.get("/type", getProductsByType); 
 
-router.get("/:id", getProduct); //ok
+router.get("/", getProducts); 
 
-router.post("/", newProduct); //ok
+router.get("/:id", getProduct);
+
+router.post("/", newProduct); 
 
 router.put("/:id", updateProduct);
 

@@ -26,6 +26,18 @@ const getProducts = async (req, res = response) => {
   }
 };
 
+const getProductsByType = async (req, res = response) => {
+  try {
+    const { type } = req.query;
+    const allProducts = await productModel.find({ type });
+    res.json(allProducts);
+  } catch (error) {
+    res.status(500).json({
+      message: error.message || "Error al obtener productos",
+    });
+  }
+};
+
 const getProduct = async (req, res = response) => {
   try {
     const product = await productModel.findById(req.params.id);
@@ -44,6 +56,7 @@ const newProduct = async (req, res = response) => {
       price: req.body.price,
       image: req.body.image,
       type: req.body.type,
+      subtype: req.body.subtype,
     });
     await newProduct.save();
     res.json({
@@ -80,4 +93,5 @@ module.exports = {
   newProduct,
   deleteProduct,
   updateProduct,
+  getProductsByType,
 };
