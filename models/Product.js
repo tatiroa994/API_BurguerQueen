@@ -26,6 +26,16 @@ const productSchema = new Schema(
       type: String,
       required: true,
       trim: true,
+    },
+    multiple:{
+      type: Array,
+      required: true,
+      trim: true,
+    },
+    unique:{
+      type: Array,
+      required: true,
+      trim: true,
     }
   },
   {
