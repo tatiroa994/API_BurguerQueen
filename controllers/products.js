@@ -28,8 +28,8 @@ const getProducts = async (req, res = response) => {
 
 const getProductsByType = async (req, res = response) => {
   try {
-    const { type } = req.query;
-    const allProducts = await productModel.find({ type });
+    const { type, subtype } = req.query;
+    const allProducts = await productModel.find({ type, subtype});
     res.json(allProducts);
   } catch (error) {
     res.status(500).json({
